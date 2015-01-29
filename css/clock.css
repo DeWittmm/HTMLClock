@@ -1,21 +1,28 @@
 html {
 	color: #000;
+	text-align: center;
 }
 
 body {
-	background-color: #4790f0;
+	 font-family: "Helvetica";
+	 font-size: 2em;
+	/* background-color: #4790f0; */
 	color: #FFF
 }
 
-p {
-    font-family: "Helvetica";
-    font-size: 10em;
-    font-weight: bold;
-    text-align: center;
+h2 {
+	 font-family: "Helvetica";
+	 text-align: center;
 }
 
-.clock {
+#timeStamp {
 	font-family: "Helvetica";
-	font-size: 25px;
+	font-size: 3em;
+	font-weight: bold;
+}
+
+.title {
+	font-family: "Helvetica";
+	font-size: 30px;
 	text-align: center;
 }

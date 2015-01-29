@@ -19,8 +19,8 @@ function getTemp() {
 	   
 	   success: function( json ) {
 		   // console.log(JSON.stringify(json));
-		   
-			$( "#forecastLabel" ).append(json.daily.summary);
+		   	$( ".subtitle" ).append("lat: 35.300399 lon: -120.66236");
+		   	$( "#forecastLabel" ).append(json.daily.summary);
 	
 			var src = 'img/' + json.daily.icon + ".png";
 			$("#forecastIcon").attr("src", src);

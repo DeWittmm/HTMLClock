@@ -21,10 +21,15 @@ h2 {
 	font-weight: bold;
 }
 
+#positionFooter {
+	text-align: right;
+	font-size: 0.5em;
+}
+
 .title {
 	padding-bottom: 0em;
 	font-family: "Helvetica";
-	font-size: 30px;
+	font-size: 40px;
 }
 
 .subtitle {

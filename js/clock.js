@@ -5,19 +5,17 @@ setInterval(getTime, 999);
 var body = $("body");
 
 $(document).ready(function() {
-	getLocation()
-
-	getTemp()
+	getLocation(getTemp)
 });
 
 function getTime() {
 	var d = new Date();
-	$( "#timeStamp").text(d.toLocaleTimeString());
+	$("#timeStamp").text(d.toLocaleTimeString());
 }
 
-function getTemp(lat, lon) {
-	lat = 35.300399;
-	lon = -120.662362;
+function getTemp(position) {
+	lat = position.coords.latitude;
+	lon = position.coords.longitude;
 	
 	$.ajax({	
 	   url: "https://api.forecast.io/forecast/64144c099db5f1848951a234a2f4c768/" + lat + "," + lon + "?callback=?", 
@@ -57,9 +55,9 @@ function getTemp(lat, lon) {
 }
 
 // http://www.w3schools.com/html/html5_geolocation.asp
-function getLocation() {
+function getLocation(displayfunc) {
 	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(showPosition);
+		navigator.geolocation.getCurrentPosition(displayfunc);
 	} else {
 		alert("Geolocation is not supported by this browser.");
 	}

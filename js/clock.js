@@ -6,6 +6,7 @@ var body = $("body");
 
 $(document).ready(function() {
 	getLocation(getTemp)
+	getLocation(showPosition)
 });
 
 function getTime() {

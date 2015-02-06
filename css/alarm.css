@@ -11,6 +11,17 @@ h2 {
 	width:100px;
 	padding:10px 10px;
 }
+
+.deleteButton {
+	display:block;
+	/* border-radius: 50%; */
+	margin:10px auto;
+	padding:10px 10px;
+	/* background-color: #ff3d3d; */
+	color: #ff3d3d;
+	align-items: right;
+}
+
 .flexable {
 	display: -webkit-box;
 	display: -moz-box;

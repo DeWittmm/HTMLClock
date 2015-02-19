@@ -70,5 +70,4 @@ function showPosition(position) {
 	"<br>Longitude: " + position.coords.longitude); 
 }
 
-// window.alert("JavaScript!");
 console.log(Date().toString());

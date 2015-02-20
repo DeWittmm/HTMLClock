@@ -37,8 +37,10 @@ function getUser() {
 		request.execute(function(resp) {
 		   userName = resp.displayName;
 		   _userId_ = resp.result.id;
-
-		   $("#userName").html(userName + "'s Clock")
+			
+		console.log('Got UserId: ' + _userId_);
+			
+		   $("#alarmTitle").html(userName + "'s Alarms")
 		   getAllAlarms(_userId_);
 	   });
     });

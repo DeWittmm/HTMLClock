@@ -24,6 +24,8 @@ function signinCallback(authResult) {
   } else {
 	$("#addAlarmBtn").css("display", "none");
 	$('#signinButton').css("display", "block");
+	$("#alarmTitle").html("Alarms")
+	
 	console.log('Sign-in state: ' + authResult['error']);
   }
 }
@@ -38,7 +40,7 @@ function getUser() {
 		   userName = resp.displayName;
 		   _userId_ = resp.result.id;
 			
-		console.log('Got UserId: ' + _userId_);
+		console.log('UserId: ' + _userId_);
 			
 		   $("#alarmTitle").html(userName + "'s Alarms")
 		   getAllAlarms(_userId_);

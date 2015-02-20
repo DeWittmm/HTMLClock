@@ -24,13 +24,9 @@ h2 {
 }
 
 .deleteButton {
-	display:block;
-	/* border-radius: 50%; */
-	margin:10px auto;
-	padding:10px 10px;
-	/* background-color: #ff3d3d; */
-	color: #ff3d3d;
-	align-items: right;
+	margin:-2px auto;
+	color: #ff8244;
+	width:30;
 }
 
 /********** The container that holds the alarm section *********/

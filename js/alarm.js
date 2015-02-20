@@ -1,3 +1,5 @@
+var _userId = 0
+
 $(document).ready(function() {
 	// Setup Options
 	for (i = 1; i <= 12; i++) { 
@@ -16,7 +18,7 @@ $(document).ready(function() {
 function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
 	$("#addAlarmBtn").css("display", "block");
-	$('#signinButton').setAttribute('style', 'display: none');
+	$('#signinButton').css("display", "none");
 	
 	getUser();
   } else {
@@ -31,13 +33,13 @@ function getUser() {
 		var request = gapi.client.plus.people.get({
 		   'userId': 'me'
 		});
+		
 		request.execute(function(resp) {
 		   userName = resp.displayName;
-		   userId = resp.result.id;
-		   _userId = userId
+		   _userId_ = resp.result.id;
 
 		   $("#userName").html(userName + "'s Clock")
-		   getAllAlarms();
+		   getAllAlarms(_userId_);
 	   });
     });
     $('#signinButton').css('display', 'none');
@@ -85,7 +87,7 @@ function addAlarm() {
 	var time = hours + ":" + mins + ampm;
 	var AlarmClass = Parse.Object.extend("Alarm");
 	var alarm = new AlarmClass();
-	alarm.save({"time": time,"alarmName": alarmName}, {
+	alarm.save({"time": time,"alarmName": alarmName, "googleId" : _userId_}, {
 	  success: function(object) {
 		insertAlarm(time, alarmName, object.id);
 		hideAlarmPopup();

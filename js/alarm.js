@@ -9,7 +9,7 @@ $(document).ready(function() {
 		$("#mins").append("<option> "+leadingZeros+" </option>");
 	}
 	
-	// $("#addAlarmBtn").css("display", "none");
+	$("#addAlarmBtn").css("display", "none");
 	getAllAlarms();
 });
 

@@ -26,7 +26,7 @@ function getTemp(position) {
 	   
 	   success: function( json ) {
 		   // console.log(JSON.stringify(json));
-		   	$( "#forecastLabel" ).append(json.daily.summary);
+		   	$("#forecastLabel").append(json.daily.summary);
 	
 			var src = 'img/' + json.daily.icon + ".png";
 			$("#forecastIcon").attr("src", src);
@@ -65,7 +65,7 @@ function getLocation(displayfunc) {
 }
 
 function showPosition(position) {
-	body.append( "<p id=positionFooter> </p>")
+	body.append( "<p id=positionFooter class=mdFont > </p>")
 	$("#positionFooter").append("Latitude: " + position.coords.latitude + 
 	"<br>Longitude: " + position.coords.longitude); 
 }

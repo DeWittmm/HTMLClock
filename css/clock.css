@@ -1,18 +1,12 @@
-html {
-	color: #000;
-	text-align: center;
-}
-
 body {
-	 font-family: "Helvetica";
-	 font-size: 2em;
 	 background-color: #d6d6d6;
-	 color: #FFF;
+	 text-align: center;
 }
 
-h2 {
-	 font-family: "Helvetica";
-	 text-align: center;
+.mdFont {
+	font-family: "Helvetica";
+	font-size: 2em;
+	color: #FFF;
 }
 
 #timeStamp {

@@ -10,7 +10,6 @@ $(document).ready(function() {
 	}
 	
 	$("#addAlarmBtn").css("display", "none");
-	getAllAlarms();
 });
 
 // MARK: Google+ Authentication
@@ -18,18 +17,30 @@ function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
 	$("#addAlarmBtn").css("display", "block");
 	$('#signinButton').setAttribute('style', 'display: none');
-
-	showAlarmPopup();
+	
+	getUser();
   } else {
 	$("#addAlarmBtn").css("display", "none");
-
-	// Update the app to reflect a signed out user
-	// Possible error values:
-	//   "user_signed_out" - User is signed-out
-	//   "access_denied" - User denied access to your app
-	//   "immediate_failed" - Could not automatically log in the user
+	$('#signinButton').css("display", "block");
 	console.log('Sign-in state: ' + authResult['error']);
   }
+}
+
+function getUser() {
+	gapi.client.load('plus','v1', function() {
+		var request = gapi.client.plus.people.get({
+		   'userId': 'me'
+		});
+		request.execute(function(resp) {
+		   userName = resp.displayName;
+		   userId = resp.result.id;
+		   _userId = userId
+
+		   $("#userName").html(userName + "'s Clock")
+		   getAllAlarms();
+	   });
+    });
+    $('#signinButton').css('display', 'none');
 }
 
 function showAlarmPopup() {
@@ -101,11 +112,12 @@ function deleteAlarm(elemClass) {
 	});
 }
 
-function getAllAlarms() {
+function getAllAlarms(userId) {
 		Parse.initialize("HcW1sYtq5mDdCxNdXbouDeQvBPkjdkGJsnBJ0ouH", "pRjkawCPgfwejgDc1cQLn5JMTU0V7m8ZCG2LaXVx");
 		
 		var AlarmObject = Parse.Object.extend("Alarm");
 		var query = new Parse.Query(AlarmObject);
+		query.equalTo("googleId", userId);
 		query.find({
 			success: function(results) {
 			  for (var i = 0; i < results.length; i++) { 

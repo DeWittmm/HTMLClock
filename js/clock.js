@@ -5,8 +5,10 @@ setInterval(getTime, 999);
 var body = $("body");
 
 $(document).ready(function() {
-	getLocation(getTemp)
-	getLocation(showPosition)
+	compSciCoords = {latitude: 35.300399, longitude: -120.662362}
+	position = {coords: compSciCoords}
+	getWeather(position)
+	showPosition(position)
 });
 
 function getTime() {
@@ -14,7 +16,12 @@ function getTime() {
 	$("#timeStamp").text(d.toLocaleTimeString());
 }
 
-function getTemp(position) {
+function findLocalWeather() {
+	getLocation(getWeather)
+	getLocation(showPosition)
+}
+
+function getWeather(position) {
 	lat = position.coords.latitude;
 	lon = position.coords.longitude;
 	
@@ -26,11 +33,12 @@ function getTemp(position) {
 	   
 	   success: function( json ) {
 		   // console.log(JSON.stringify(json));
-		   	$("#forecastLabel").append(json.daily.summary);
-	
-			var src = 'img/' + json.daily.icon + ".png";
-			$("#forecastIcon").attr("src", src);
-			
+
+			$("#forecastLabel").text(json.daily.summary);
+		   
+		   var src = 'img/' + json.daily.icon + ".png";
+		   $("#forecastIcon").attr("src", src);
+
 			var tempMax = json.daily.data[0].temperatureMax;
 			if (tempMax < 60) {
 			 	body.addClass("cold")
@@ -58,14 +66,15 @@ function getTemp(position) {
 // http://www.w3schools.com/html/html5_geolocation.asp
 function getLocation(displayfunc) {
 	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(displayfunc);
+			navigator.geolocation.getCurrentPosition(displayfunc);
 	} else {
 		alert("Geolocation is not supported by this browser.");
 	}
 }
 
 function showPosition(position) {
-	body.append( "<p id=positionFooter class=mdFont > </p>")
+	// body.append( "<p id=positionFooter class=mdFont > </p>") 
+	//Better practice to keep the structure of the DOM constant and change out each elements contents. 
 	$("#positionFooter").append("Latitude: " + position.coords.latitude + 
 	"<br>Longitude: " + position.coords.longitude); 
 }

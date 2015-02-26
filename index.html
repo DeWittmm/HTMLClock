@@ -24,7 +24,7 @@
 		
 		<img id="forecastIcon" src=""/>
 		<div id="forecastLabel" class="mdFont"> </div>
-		
+		<div id="forecastPosition" class="mdFont"> </div>
 		<br/>
 		<br/>
 
@@ -69,6 +69,12 @@
 			</div>
 		</div>
 		
+		<!-- Location Info -->		
+		<input id="changeLocationBtn" type="button" value="Get Location" onclick="findLocalWeather()" class="button"/>
+		<br>
+		<p id=positionFooter class=mdFont > </p>
+
+		<!-- Scripts -->
 		<script src="https://apis.google.com/js/client:platform.js" async defer></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>	
 		<script src="https://www.parsecdn.com/js/parse-1.3.4.min.js"></script>	

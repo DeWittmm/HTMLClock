@@ -9,6 +9,13 @@ body {
 	color: #FFF;
 }
 
+#changeLocationBtn {
+	font-family: "Helvetica";
+	font-size: 0.0em;
+	float: right;
+	margin:2px auto; /* Override button class */	
+}
+
 #timeStamp {
 	font-family: "Helvetica";
 	font-size: 2.5em;

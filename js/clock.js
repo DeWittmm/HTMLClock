@@ -1,11 +1,12 @@
-getTime()
-setInterval(getTime, 999);
 
 //Properties
 var body = $("body");
 
 $(document).ready(function() {
-	compSciCoords = {latitude: 35.300399, longitude: -120.662362}
+	getTime()
+	setInterval(getTime, 999);
+
+	compSciCoords = {latitude: 35.30062899763752, longitude: -120.66242171415054}
 	position = {coords: compSciCoords}
 	getWeather(position)
 	showPosition(position)
@@ -75,8 +76,8 @@ function getLocation(displayfunc) {
 function showPosition(position) {
 	// body.append( "<p id=positionFooter class=mdFont > </p>") 
 	//Better practice to keep the structure of the DOM constant and change out each elements contents. 
-	$("#positionFooter").append("Latitude: " + position.coords.latitude + 
-	"<br>Longitude: " + position.coords.longitude); 
+	$("#positionFooter").html("Latitude: " + position.coords.latitude + '<br>' +
+	"Longitude: " + position.coords.longitude); 
 }
 
 console.log(Date().toString());

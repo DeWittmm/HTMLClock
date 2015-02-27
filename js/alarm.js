@@ -42,8 +42,8 @@ function getUser() {
 			
 		console.log('UserId: ' + _userId_);
 			
-		   $("#alarmTitle").html(userName + "'s Alarms")
-		   getAllAlarms(_userId_);
+	    $("#alarmTitle").html(userName + "'s Alarms")
+	    getAllAlarms(_userId_);
 	   });
     });
     $('#signinButton').css('display', 'none');
@@ -60,22 +60,10 @@ function hideAlarmPopup() {
 	$("#alarmName").val(''); 
 }
 
-function insertAlarm(time, alarmName, objectId) {
-	var alarm = $("<div>").addClass("flexable");
-	alarm.addClass(objectId)
-	alarm.append("<div class='name'> "+alarmName+" </div>");
-	var timeStamp = " - " + time;
-	alarm.append("<div class='time'> "+timeStamp+" </div>");
-	alarm.append("<input type='button' value='x' id="+objectId+" class='deleteButton'/>");
-	$("#alarms").append(alarm);
-	
-	$(".deleteButton").click(function(elem) {
-		var idClicked = elem.target.id;
-		deleteAlarm(idClicked);
-	});
-}
-
 function addAlarm() {
+	// Google Analytics
+	ga('send', 'event', 'Alarm', 'Add');
+
 	var hours, mins, ampm, alarmName;
 	
 	alarmName = $("#alarmName").val(); 
@@ -99,7 +87,26 @@ function addAlarm() {
 	});
 }
 
+function insertAlarm(time, alarmName, objectId) {
+	
+	var alarm = $("<div>").addClass("flexable");
+	alarm.addClass(objectId)
+	alarm.append("<div class='name'> "+alarmName+" </div>");
+	var timeStamp = " - " + time;
+	alarm.append("<div class='time'> "+timeStamp+" </div>");
+	alarm.append("<input type='button' value='x' id="+objectId+" class='deleteButton'/>");
+	$("#alarms").append(alarm);
+
+	$(".deleteButton").click(function(elem) {
+		var idClicked = elem.target.id;
+		deleteAlarm(idClicked);
+	});
+}
+
 function deleteAlarm(elemClass) {
+	// Google Analytics
+	ga('send', 'event', 'Alarm', 'Delete');
+	
 	console.log(elemClass);
 	$("."+elemClass).remove();
 	

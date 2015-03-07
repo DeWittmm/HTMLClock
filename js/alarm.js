@@ -1,6 +1,7 @@
 var _userId = 0
 
 $(document).ready(function() {
+    
 	// Setup Options
 	for (i = 1; i <= 12; i++) { 
 		$("#hours").append("<option> "+i+" </option>");

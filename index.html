@@ -34,6 +34,7 @@
 				<input id="addAlarmBtn" type="button" value="Add Alarm" onclick="showAlarmPopup()" class="button"/>
 			</div>
 			<div id="alarms"></div>
+			<input id="oAuthLoginBtn" type="button" value="OAuth Sign in" onclick="login()" class="button"/>
 			<span id="signinButton">
 			  <span
 				class="g-signin"
@@ -45,9 +46,7 @@
 			  </span>
 			</span>
 		</div>
-		
-		<!-- Loading Button -->
-		
+				
 		<div id="mask" class="hide"> </div>
 		<div id="popup" class="hide"> 
 			<h1> Add Alarm </h1>
@@ -100,5 +99,8 @@
 		<!-- My scripts -->
 		<script src="js/clock.js" type="text/javascript"></script>
 		<script src="js/alarm.js" type="text/javascript"></script>
+		
+		<script src="lib/oauth.js" type="text/javascript"></script>
+		<script src="lib/redirect.js" type="text/javascript"></script>
 	</body>
 </html>
